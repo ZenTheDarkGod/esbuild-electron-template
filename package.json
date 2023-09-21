@@ -1,0 +1,28 @@
+{
+  "name": "electron-base-project",
+  "version": "1.0.0",
+  "description": "the template project for electron projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:src": "node ./tools/build.mjs source",
+    "build:app": "node ./tools/build.mjs electron",
+    "build:all": "node ./tools/build.mjs all",
+    "exec": "npx electron ./build/",
+    "exec:src": "npm run build:src && npm run exec",
+    "exec:app": "npm run build:app && npm run exec",
+    "exec:all": "npm run build:all && npm run exec"
+  },
+  "author": "zewenn",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "electron": "^26.2.2",
+    "esbuild": "0.19.3"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "marked": "^9.0.3",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "livePreview.serverRoot": "/dist/",
+    "fiveServer.navigate": false,
+    "fiveServer.port": 6969,
+    "fiveServer.openTerminal": false,
+    "liveServer.settings.root": "/dist/",
+    "liveServer.settings.port": 5501
+}
