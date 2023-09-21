@@ -1,6 +1,5 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
-const cp = require("child_process");
 const textHelper = {
     Reset: '\x1b[0m',
     Bright: '\x1b[1m',

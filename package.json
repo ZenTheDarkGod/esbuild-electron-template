@@ -11,7 +11,8 @@
     "exec": "npx electron ./build/",
     "exec:src": "npm run build:src && npm run exec",
     "exec:app": "npm run build:app && npm run exec",
-    "exec:all": "npm run build:all && npm run exec"
+    "exec:all": "npm run build:all && npm run exec",
+    "setup": "node ./tools/setup.mjs"
   },
   "author": "zewenn",
   "license": "ISC",
