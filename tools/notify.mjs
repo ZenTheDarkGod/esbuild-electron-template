@@ -88,7 +88,7 @@ async function main() {
             break;
     }
     if (!args[3] && args[2] === "execute") {
-        buildTypes[1].push("self")
+        buildTypes[1] = "self";
     }
     
     if (!(
