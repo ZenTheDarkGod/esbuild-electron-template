@@ -55,7 +55,7 @@ const createWindow = () => {
     Menu.setApplicationMenu(null);
 
     win.loadFile('index.html');
-    setUpEvents(win);
+    setUpEvents();
 
     ipcMain.on('debug-log', (event, content) => {
         console.log(
