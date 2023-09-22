@@ -71,6 +71,8 @@ async function main() {
             break;
     }
 
+    console.log("\n\n\n\n\n\n");
+
     buildTypes.forEach(async (type) => {
         if (typeof builds[type] !== "function") {
             text.debug.error("Somehow you managed to put in an incorrect type, ggs...")

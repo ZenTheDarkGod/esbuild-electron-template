@@ -98,13 +98,14 @@ function setText(text, as) {
             textTransformList.push(thc[key]);
         }
     }
-
+    
+    
     if (as.color) {
-        const key = `FG${as.color[0].toUpperCase()}${as.color.slice(1, -1)}`;
+        const key = `Fg${as.color[0].toUpperCase()}${as.color.slice(1, as.color.length)}`;
         inThcPush(key);
     }
     if (as.bgColor) {
-        const key = `FG${as.bgColor[0].toUpperCase()}${as.bgColor.slice(1, -1)}`;
+        const key = `Bg${as.bgColor[0].toUpperCase()}${as.bgColor.slice(1, as.bgColor.length)}`;
         inThcPush(key);
     }
     if (as.dimness) {

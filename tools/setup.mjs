@@ -1,6 +1,6 @@
 
 import * as cp from 'child_process';
-import text, { log } from './text.mjs';
+import text from './text.mjs';
 
 cp.exec("npm i --save-dev", (err, stdout, stderr) => {
     if (err) {
