@@ -57,32 +57,32 @@ async function main() {
     /**
      * @type string[]
      */
-    const buildTypes = [[], []]
+    const buildTypes = []
 
     switch (args[2]) {
         case "build":
-            buildTypes[0].push("build")
+            buildTypes[0] = "build"
             break;
         case "execute":
-            buildTypes[0].push("execute")
+            buildTypes[0] = "execute"
             break;
         case "__FAILTEST__":
-            buildTypes[0].push("assdasd")
+            buildTypes[0] = "assdasd"
             break;
         default:
             break;
     }
     switch (args[3]) {
         case "src":
-            buildTypes[1].push("src")
+            buildTypes[1] = "src"
             break;
         case "app":
-            buildTypes[1].push("app")
+            buildTypes[1] = "app"
         case "all":
-            buildTypes[1].push("all")
+            buildTypes[1] = "all"
             break;
         case "__FAILTEST__":
-            buildTypes[1].push("assdasd")
+            buildTypes[1] = "assdasd"
             break;
         default:
             break;
@@ -91,10 +91,9 @@ async function main() {
         buildTypes[1] = "self";
     }
     
-    if (!(
-        ["build", "execute"].includes(buildTypes[0]) ||
-        ["self", "src", "app", "all"].includes(buildTypes[1])
-        )) text.debug.error("Incorrect arguments provided!")
+    if (
+        !(["build", "execute"].includes(buildTypes[0]) && ["self", "src", "app", "all"].includes(buildTypes[1]))
+        ) text.debug.error("Incorrect arguments provided!", `${buildTypes[0]} ${["build", "execute"].includes(buildTypes[0])} ${["self", "src", "app", "all"].includes(buildTypes[1])}`)
     
     console.log("\n\n\n\n\n\n");
     
