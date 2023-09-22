@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { log } from './text.mjs';
+import text, { log } from './text.mjs';
 
 /**
  * 
@@ -18,16 +18,16 @@ function createFolder(path) {
     // Create the folder
     try {
         fs.mkdirSync(path);
-        log("SUCCESS", `Folder created successfully at path: ${path}`);
+        text.debug.success(`Folder created successfully at path: ${path}`);
     } catch (error) {
-        log("FAIL", `An error occurred while creating the folder: ${error}`);
+        text.debug.error(`An error occurred while creating the folder: ${error}`);
     }
 }
 
 export function copyFolderContents(sourceFolder, destinationFolder) {
     // Check if both folders exist
     if (!fs.existsSync(sourceFolder)) {
-        log("FAIL", `Source folder '${sourceFolder}' does not exist`);
+        text.debug.error(`Source folder '${sourceFolder}' does not exist`);
         return;
     }
     if (!fs.existsSync(destinationFolder)) {
@@ -65,8 +65,8 @@ export function copyFolderContents(sourceFolder, destinationFolder) {
             }
         });
 
-        log("SUCCESS", `${sourceFolder.replace(/^(?:\.\.\/|\.\/)+/, '')} has been compiled successfully!`);
+        text.debug.success(`${sourceFolder.replace(/^(?:\.\.\/|\.\/)+/, '')} has been compiled successfully!`);
     } catch (err) {
-        log("FAIL", `Error compiling ${sourceFolder.replace(/^(?:\.\.\/|\.\/)+/, '')}: ${err}`);
+        text.debug.error(`Error compiling ${sourceFolder.replace(/^(?:\.\.\/|\.\/)+/, '')}: ${err}`);
     }
 }

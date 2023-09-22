@@ -1,11 +1,11 @@
 
 import * as cp from 'child_process';
-import { log } from './text.mjs';
+import text, { log } from './text.mjs';
 
 cp.exec("npm i --save-dev", (err, stdout, stderr) => {
     if (err) {
-        log("FAIL", "Error: " + err)
+        text.debug.error("Error: " + err)
         return;
     }
-    log("SUCCESS", "Setup complete!")
+    text.debug.success("Setup complete!")
 });

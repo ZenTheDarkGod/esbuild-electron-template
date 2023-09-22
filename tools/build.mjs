@@ -1,5 +1,5 @@
 import * as esbuild from 'esbuild'
-import { log, thc } from './text.mjs'
+import text, { log } from './text.mjs'
 import { copyFolderContents } from './files.mjs'
 
 const externalPackages = ['electron'];
@@ -15,11 +15,11 @@ const builds = {
                     external: externalPackages,
                     outfile: './build/main.js',
                 })
-                log("SUCCESS", "Source build was successful!")
+                text.debug.success("Source build was successful!")
                 resolve()
             }
             catch (err) {
-                log("FAIL", "Source build failed!", err)
+                text.debug.error("Source build failed!", err)
                 reject()
             }
         })
@@ -30,11 +30,11 @@ const builds = {
                 copyFolderContents("./app", "./build")
                 copyFolderContents("./assets", "./build/assets")
 
-                log("SUCCESS", "Electron build was successful!")
+                text.debug.success("Electron build was successful!")
                 resolve()
             }
             catch {
-                log("FAIL", "Source build failed!")
+                text.debug.error("Source build failed!")
                 reject()
             }
         })
@@ -73,7 +73,7 @@ async function main() {
 
     buildTypes.forEach(async (type) => {
         if (typeof builds[type] !== "function") {
-            log("FAIL", "Somehow you managed to put in an incorrect type, ggs...")
+            text.debug.error("Somehow you managed to put in an incorrect type, ggs...")
             return;
         }
         await builds[type]()
