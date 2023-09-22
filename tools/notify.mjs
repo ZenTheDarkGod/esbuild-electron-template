@@ -91,9 +91,10 @@ async function main() {
         buildTypes[1].push("self")
     }
     
-    if (!buildTypes[0] && buildTypes[1]) {
-        text.debug.error("Correct arguments not provided!")
-    }
+    if (!(
+        ["build", "execute"].includes(buildTypes[0]) ||
+        ["self", "src", "app", "all"].includes(buildTypes[1])
+        )) text.debug.error("Incorrect arguments provided!")
     
     console.log("\n\n\n\n\n\n");
     
