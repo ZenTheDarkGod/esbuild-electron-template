@@ -29,7 +29,7 @@ export const thc = {
  * @param {"SUCCESS" | "FAIL"} type 
  * @param {string} message 
  */
-export function log(type, message) {
+export function log(type, message, err) {
     type = type.toUpperCase();
     const textTransform = type === "FAIL" ? `${thc.BgRed}` : `${thc.BgGreen}`
     const symbol = type === "FAIL" ? `${thc.FgRed}✘` : `${thc.FgGreen}✔`
@@ -40,6 +40,7 @@ export function log(type, message) {
     ].join(" "))
 
     if (type === "FAIL") {
-        throw new Error(message);
+        if (!err) throw new Error(message);
+        throw new Error(err);
     }
 }

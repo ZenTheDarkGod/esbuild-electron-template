@@ -4,7 +4,8 @@
   "description": "the template project for electron projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest ./spec/",
+    "test:cov": "jest ./spec/ --coverage",
     "build:src": "node ./tools/build.mjs source",
     "build:app": "node ./tools/build.mjs electron",
     "build:all": "node ./tools/build.mjs all",
@@ -19,11 +20,20 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",
     "electron": "^26.2.2",
-    "esbuild": "0.19.3"
+    "electron-mock-ipc": "^0.3.12",
+    "esbuild": "0.19.3",
+    "ts-jest": "^29.1.1"
   },
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "marked": "^9.0.3",
-    "path": "^0.12.7"
+    "@types/jest": "^29.5.5",
+    "jest": "^29.7.0",
+    "marked": "^9.0.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^electron$": "<rootDir>/__mocks__/electron-mock.ts"
+    }
   }
 }

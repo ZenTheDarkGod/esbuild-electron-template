@@ -2,25 +2,29 @@ import * as esbuild from 'esbuild'
 import { log, thc } from './text.mjs'
 import { copyFolderContents } from './files.mjs'
 
+const externalPackages = ['electron'];
+
 const builds = {
-    source : async function () {
+    source: async function () {
         return new Promise(async (resolve, reject) => {
             try {
                 await esbuild.build({
                     entryPoints: ['./source/index.ts'],
                     bundle: true,
+                    platform: 'node',
+                    external: externalPackages,
                     outfile: './build/main.js',
                 })
                 log("SUCCESS", "Source build was successful!")
                 resolve()
             }
-            catch {
-                log("FAIL", "Source build failed!")
+            catch (err) {
+                log("FAIL", "Source build failed!", err)
                 reject()
             }
         })
     },
-    electron : async function () {
+    electron: async function () {
         return new Promise(async (resolve, reject) => {
             try {
                 copyFolderContents("./app", "./build")

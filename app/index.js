@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
+const { setUpEvents } = require("./events")
 const textHelper = {
     Reset: '\x1b[0m',
     Bright: '\x1b[1m',
@@ -54,14 +55,25 @@ const createWindow = () => {
     Menu.setApplicationMenu(null);
 
     win.loadFile('index.html');
+    setUpEvents(win);
+
+    ipcMain.on('debug-log', (event, content) => {
+        console.log(
+            `${textHelper.Bright}[${getCurrentTime()}]${textHelper.Reset} ${content}\r`
+        );
+    });
 };
 
 
 
 app.whenReady().then(() => {
     createWindow();
+    console.log(
+        `${textHelper.Bright}[${getCurrentTime()}]${textHelper.Reset} Debug console runnig...\r`
+    );
 });
 
 app.on('window-all-closed', () => {
     app.quit();
+    console.log("\r\n");
 })
