@@ -1,5 +1,11 @@
 
 # Esbuild Electron Template
+This template provides a super fast electron app build time, and built in testing.
+
+## Create New Project:
+```bash
+    npm create es-electron-template@latest
+```
 
 ## How to use?
 ### Initalise project:
