@@ -1,6 +1,6 @@
 {
   "name": "electron-base-project",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "the template project for electron projects",
   "scripts": {
     "test": "jest ./spec/",
