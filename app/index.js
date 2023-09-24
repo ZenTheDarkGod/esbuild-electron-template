@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
-const { setUpEvents } = require("./events");
+const events = require("./events");
 const debugconsole = require("./debug-console");
 
 const createWindow = () => {
@@ -18,12 +18,10 @@ const createWindow = () => {
     Menu.setApplicationMenu(null);
 
     win.loadFile('index.html');
-    setUpEvents();
+    events.init();
 
     debugconsole.init();
 };
-
-
 
 app.whenReady().then(() => {
     createWindow();
