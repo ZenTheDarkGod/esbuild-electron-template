@@ -21,6 +21,10 @@ const createWindow = () => {
     events.init();
 
     debugconsole.init();
+
+    ipcMain.on('exit-app', () => {
+        win.close();
+    });
 };
 
 app.whenReady().then(() => {
