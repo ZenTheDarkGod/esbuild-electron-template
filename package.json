@@ -8,10 +8,12 @@
     "build:src": "node ./tools/notify.mjs build src && node ./tools/build.mjs source",
     "build:app": "node ./tools/notify.mjs build app && node ./tools/build.mjs electron",
     "build:all": "node ./tools/notify.mjs build all && node ./tools/build.mjs all",
+    "build:exp": "node ./tools/notify.mjs build all && node ./tools/build.mjs exp",
     "exec": "node ./tools/notify.mjs execute && npx electron ./build/",
     "exec:src": "node ./tools/notify.mjs execute src && npm run build:src && npm run exec",
     "exec:app": "node ./tools/notify.mjs execute app && npm run build:app && npm run exec",
     "exec:all": "node ./tools/notify.mjs execute all && npm run build:all && npm run exec",
+    "exec:exp": "node ./tools/notify.mjs execute all && npm run build:exp && npm run exec",
     "setup": "node ./tools/setup.mjs",
     "release": "node ./tools/versionManager.js"
   },

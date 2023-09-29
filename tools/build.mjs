@@ -38,6 +38,30 @@ const builds = {
                 reject()
             }
         })
+    },
+    /**
+     * **Experimental build, don't use in production**
+     * @returns 
+     */
+    exp: async function () {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await esbuild.build({
+                    entryPoints: ['./app/index.ts'],
+                    bundle: true,
+                    platform: 'node',
+                    external: externalPackages,
+                    outfile: './build/index.js',
+                })
+                copyFolderContents("./app/html", "./build")
+                text.debug.success("Source build was successful!")
+                resolve()
+            }
+            catch (err) {
+                text.debug.error("Source build failed!", err)
+                reject()
+            }
+        })
     }
 }
 
@@ -59,6 +83,9 @@ async function main() {
             break;
         case "electron":
             buildTypes.push("electron")
+            break;
+        case "exp":
+            buildTypes.push("exp")
             break;
         case "all":
             buildTypes.push("electron")
